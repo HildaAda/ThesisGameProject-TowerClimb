@@ -25,7 +25,6 @@ public partial class CrumblePlatform : StaticBody2D
         triggerArea.BodyEntered += OnBodyEntered;
         timer.Timeout += OnCrumble;
 
-        // Kuuntele animaation loppua
         sprite.AnimationFinished += OnAnimationFinished;
     }
 
@@ -41,13 +40,10 @@ public partial class CrumblePlatform : StaticBody2D
     private void OnCrumble()
     {
         collision.Disabled = true;
-        // Animaatio jatkuu → odotetaan sen päättymistä ennen tuhoamista
-        // sprite.Visible = false; // Piilota vasta kun animaatio loppuu jos haluat
     }
 
     private void OnAnimationFinished()
     {
-        // Varmistetaan että kyseessä on Crumble-animaatio
         if (sprite.Animation == "Crumble")
         {
             QueueFree();

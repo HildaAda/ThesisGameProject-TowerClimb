@@ -6,7 +6,7 @@ public partial class PlatformSpawner : Node2D
 {
     [Export] public Godot.Collections.Array<PackedScene> PlatformSets;
     [Export] public PackedScene StartingPlatformSet;
-    [Export] public float SpawnIntervalY = 380f; // Väli setille pystysuunnassa
+    [Export] public float SpawnIntervalY = 380f;
     [Export] public float DespawnDistanceBelow = 200f;
 
     private float nextSpawnY;
@@ -19,8 +19,7 @@ public partial class PlatformSpawner : Node2D
     {
         rng.Randomize();
 
-        // Aloitussetti
-        nextSpawnY = 0f; // Voidaan laittaa nollaan tai haluttuun alkuun
+        nextSpawnY = 0f;
 
         if (StartingPlatformSet != null)
         {
@@ -31,7 +30,6 @@ public partial class PlatformSpawner : Node2D
             nextSpawnY -= SpawnIntervalY;
         }
 
-        // Alkuun muut setit
         for (int i = 0; i < 4; i++)
         {
             SpawnPlatformSet();
@@ -46,13 +44,11 @@ public partial class PlatformSpawner : Node2D
         float camTop = cam.GlobalPosition.Y - GetViewport().GetVisibleRect().Size.Y / 2f;
         float camBottom = cam.GlobalPosition.Y + GetViewport().GetVisibleRect().Size.Y / 2f;
 
-        // Spawnataan uusia settejä, jos kamera lähestyy seuraavaa spawnkohtaa
         while (nextSpawnY > camTop - 100f)
         {
             SpawnPlatformSet();
         }
 
-        // Poistetaan setit, jotka ovat liian alhaalla kameran alareunaan nähden
         for (int i = spawnedSets.Count - 1; i >= 0; i--)
         {
             var set = spawnedSets[i];
@@ -74,7 +70,6 @@ public partial class PlatformSpawner : Node2D
         var setScene = PlatformSets[rng.RandiRange(0, PlatformSets.Count - 1)];
         var setInstance = (Node2D)setScene.Instantiate();
 
-        // Satunnainen peilaus vaakasuunnassa
         bool flipHorizontally = rng.Randf() < 0.5f;
         float playableWidth = PlayableAreaEndX - PlayableAreaStartX;
 

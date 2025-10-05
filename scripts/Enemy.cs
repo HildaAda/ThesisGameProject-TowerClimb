@@ -16,11 +16,9 @@ public partial class Enemy : Area2D
     {
         if (body.IsInGroup(TargetGroup) && body is Player player)
         {
-            // Knockbackin suunta riippuu siitä, mihin suuntaan pelaaja katsoo
             float direction = player.AnimatedSprite.FlipH ? 1f : -1f;
             Vector2 knockback = new Vector2(KnockbackX * direction, KnockbackY);
 
-            // Siirtyminen HurtStateen
             player.TransitionTo(new HurtState(player, knockback));
         }
     }

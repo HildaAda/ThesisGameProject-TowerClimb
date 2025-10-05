@@ -7,7 +7,6 @@ public partial class LivesUi : CanvasLayer
 
     public override void _Ready()
     {
-        // Haetaan viittaukset valmiiksi
         hearts = new TextureRect[9];
         for (int i = 0; i < 9; i++)
             hearts[i] = GetNode<TextureRect>($"HBoxContainer/Heart{i + 1}");

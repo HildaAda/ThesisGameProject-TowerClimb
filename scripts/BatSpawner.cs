@@ -5,10 +5,10 @@ using System.Collections.Generic;
 public partial class BatSpawner : Node2D
 {
     [Export] public PackedScene BatScene;
-    [Export] public float SpawnInterval = 2f; // sekunteja spawnien välillä
+    [Export] public float SpawnInterval = 2f;
     [Export] public float PlayableAreaWidth = 288f;
     [Export] public float PlayableAreaHeight = 324f;
-    [Export] public float SpawnOffset = 50f; // kuinka paljon spawn ulkopuolella
+    [Export] public float SpawnOffset = 50f;
 
     private float timer = 0f;
     private RandomNumberGenerator rng = new RandomNumberGenerator();
@@ -48,22 +48,17 @@ public partial class BatSpawner : Node2D
         return;
     }
 
-    // kameran koko näkyvässä maailmassa
     float halfHeight = GetViewport().GetVisibleRect().Size.Y * cam.Zoom.Y * 0.5f;
     float halfWidth  = GetViewport().GetVisibleRect().Size.X * cam.Zoom.X * 0.5f;
 
-    // satunnainen X kameran keskuksen mukaan
     float x = rng.RandfRange(cam.GlobalPosition.X - 160f, cam.GlobalPosition.X + 160f);
 
-    // spawnin Y kameran keskuksen ylä- tai alapuolelle
     float y = fromTop
         ? cam.GlobalPosition.Y - halfHeight - SpawnOffset
         : cam.GlobalPosition.Y + halfHeight + SpawnOffset;
 
     bat.GlobalPosition = new Vector2(x, y);
     bat.Direction = fromTop ? Vector2.Down : Vector2.Up;
-
-   // GD.Print($"SpawnBat fromTop={fromTop} pos=({x:0},{y:0}) cam={cam.GlobalPosition}");
 
     bat.TreeExiting += () => activeBats.Remove(bat);
         
