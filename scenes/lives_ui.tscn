@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://dma8x3ch1fxme"]
+
+[ext_resource type="Script" uid="uid://cbb2cm7ps8jtk" path="res://scripts/LivesUi.cs" id="1_hu8ac"]
+[ext_resource type="Texture2D" uid="uid://r2ndqd0su4ur" path="res://assets/Heart.png" id="2_rg5ti"]
+
+[node name="LivesUI" type="CanvasLayer"]
+script = ExtResource("1_hu8ac")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 179.0
+offset_bottom = 19.0
+scale = Vector2(2, 2)
+
+[node name="Heart1" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_rg5ti")
+
+[node name="Heart2" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_rg5ti")
+
+[node name="Heart3" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_rg5ti")
+
+[node name="Heart4" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_rg5ti")
+
+[node name="Heart5" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_rg5ti")
+
+[node name="Heart6" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_rg5ti")
+
+[node name="Heart7" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_rg5ti")
+
+[node name="Heart8" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_rg5ti")
+
+[node name="Heart9" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_rg5ti")

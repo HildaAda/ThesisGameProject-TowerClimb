@@ -1,0 +1,13 @@
+[gd_scene load_steps=6 format=3 uid="uid://o2crc3i423ej"]
+
+[ext_resource type="Script" uid="uid://crd4e5isivgyn" path="res://scripts/PlatformSpawner.cs" id="1_kyewn"]
+[ext_resource type="PackedScene" uid="uid://b1w2grhy42clx" path="res://scenes/platform_sets/platform_set_001.tscn" id="2_hvrcm"]
+[ext_resource type="PackedScene" uid="uid://bo0cdbux5fgpm" path="res://scenes/platform_sets/platform_set_002.tscn" id="3_o0vc0"]
+[ext_resource type="PackedScene" uid="uid://c46jk2ltajcqx" path="res://scenes/platform_sets/Platform_set_003.tscn" id="4_qemip"]
+[ext_resource type="PackedScene" uid="uid://dvkerxcpcra0f" path="res://scenes/platform_sets/start_set.tscn" id="5_g0a2f"]
+
+[node name="PlatformSpawner" type="Node2D"]
+z_index = 2
+script = ExtResource("1_kyewn")
+PlatformSets = Array[PackedScene]([ExtResource("2_hvrcm"), ExtResource("3_o0vc0"), ExtResource("4_qemip")])
+StartingPlatformSet = ExtResource("5_g0a2f")

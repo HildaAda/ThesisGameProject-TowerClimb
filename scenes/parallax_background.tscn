@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuipsf2w06f8x"]
+
+[ext_resource type="Texture2D" uid="uid://b76g27py6lkby" path="res://assets/BackgroundWall.png" id="1_m10ct"]
+[ext_resource type="Texture2D" uid="uid://ciygeyfey12wm" path="res://assets/SideWall.png" id="2_yqcdc"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+layer = -1
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(0, 512)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+modulate = Color(0.7, 0.7, 0.7, 1)
+position = Vector2(144, 256)
+texture = ExtResource("1_m10ct")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(0, 512)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(-32, 256)
+texture = ExtResource("2_yqcdc")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(0, 512)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer3"]
+position = Vector2(320, 256)
+texture = ExtResource("2_yqcdc")

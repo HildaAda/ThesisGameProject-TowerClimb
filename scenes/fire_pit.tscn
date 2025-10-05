@@ -1,0 +1,139 @@
+[gd_scene load_steps=19 format=3 uid="uid://bpuyo8ououtja"]
+
+[ext_resource type="Texture2D" uid="uid://do5hmqhg3m81q" path="res://assets/FirePit.png" id="1_v8ql2"]
+[ext_resource type="Texture2D" uid="uid://ct6ntgo5ll2cq" path="res://assets/FireGlow.png" id="2_7p2pl"]
+[ext_resource type="Texture2D" uid="uid://c1rukngxvemfm" path="res://assets/FireGlowS.png" id="3_crgwa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7p2pl"]
+atlas = ExtResource("1_v8ql2")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crgwa"]
+atlas = ExtResource("1_v8ql2")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wga2"]
+atlas = ExtResource("1_v8ql2")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fj2l6"]
+atlas = ExtResource("1_v8ql2")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qilyi"]
+atlas = ExtResource("1_v8ql2")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5empl"]
+atlas = ExtResource("1_v8ql2")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hgar3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7p2pl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crgwa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wga2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fj2l6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qilyi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5empl")
+}],
+"loop": true,
+"name": &"Burning",
+"speed": 11.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bnnxd"]
+radius = 20.0
+height = 102.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgar3"]
+atlas = ExtResource("3_crgwa")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnnxd"]
+atlas = ExtResource("3_crgwa")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_poe0k"]
+atlas = ExtResource("3_crgwa")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_piwpb"]
+atlas = ExtResource("3_crgwa")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjejy"]
+atlas = ExtResource("3_crgwa")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5i80"]
+atlas = ExtResource("3_crgwa")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1s4g2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgar3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnnxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_poe0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_piwpb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjejy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5i80")
+}],
+"loop": true,
+"name": &"Pulse",
+"speed": 5.0
+}]
+
+[node name="FirePit" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hgar3")
+animation = &"Burning"
+autoplay = "Burning"
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 37)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bnnxd")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 32)
+energy = 0.85
+range_layer_min = -1
+texture = ExtResource("2_7p2pl")
+texture_scale = 2.0
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.2)
+position = Vector2(0, 32)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_1s4g2")
+animation = &"Pulse"
+autoplay = "Pulse"
+frame = 1

@@ -1,0 +1,47 @@
+[gd_scene load_steps=10 format=3 uid="uid://dvkerxcpcra0f"]
+
+[ext_resource type="PackedScene" uid="uid://j4dp0hk0jdsn" path="res://scenes/floor.tscn" id="1_egpry"]
+[ext_resource type="PackedScene" uid="uid://bpuyo8ououtja" path="res://scenes/fire_pit.tscn" id="2_tujkw"]
+[ext_resource type="PackedScene" uid="uid://b3wlifbtsghsd" path="res://scenes/platform_window.tscn" id="3_kkxoi"]
+[ext_resource type="PackedScene" uid="uid://dwoq4pk3l4yj7" path="res://scenes/platform_shelf.tscn" id="4_82yt0"]
+[ext_resource type="PackedScene" uid="uid://cbf3gmy0qqnnw" path="res://scenes/platform_cabinet.tscn" id="5_seabv"]
+[ext_resource type="PackedScene" uid="uid://j500f363iobn" path="res://scenes/cauldron.tscn" id="6_sqo7l"]
+[ext_resource type="PackedScene" uid="uid://uqg38akrnf1i" path="res://scenes/platform_moving.tscn" id="7_wcdso"]
+[ext_resource type="PackedScene" uid="uid://ddltgaf18qne" path="res://scenes/skull.tscn" id="8_xgeeg"]
+[ext_resource type="PackedScene" uid="uid://bj3gelru2rf8u" path="res://scenes/candelabra.tscn" id="9_ktx1w"]
+
+[node name="StartSet" type="Node2D"]
+visibility_layer = 2
+
+[node name="Floor" parent="." instance=ExtResource("1_egpry")]
+position = Vector2(144, 282)
+
+[node name="FirePit" parent="." instance=ExtResource("2_tujkw")]
+position = Vector2(70, 258)
+
+[node name="PlatformWindow" parent="." instance=ExtResource("3_kkxoi")]
+position = Vector2(148, 151)
+
+[node name="PlatformShelf" parent="." instance=ExtResource("4_82yt0")]
+position = Vector2(233, 140)
+
+[node name="PlatformShelf2" parent="." instance=ExtResource("4_82yt0")]
+position = Vector2(233, 182)
+
+[node name="PlatformCabinet" parent="." instance=ExtResource("5_seabv")]
+position = Vector2(64, 124)
+
+[node name="Cauldron" parent="." instance=ExtResource("6_sqo7l")]
+position = Vector2(70, 244)
+
+[node name="PlatformMoving" parent="." instance=ExtResource("7_wcdso")]
+position = Vector2(109, 4)
+
+[node name="PlatformMoving2" parent="." instance=ExtResource("7_wcdso")]
+position = Vector2(184, 44)
+
+[node name="Skull" parent="." instance=ExtResource("8_xgeeg")]
+position = Vector2(254, 118)
+
+[node name="Candelabra" parent="." instance=ExtResource("9_ktx1w")]
+position = Vector2(45, 75)

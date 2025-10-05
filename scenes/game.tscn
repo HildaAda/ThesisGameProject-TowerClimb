@@ -1,0 +1,73 @@
+[gd_scene load_steps=13 format=3 uid="uid://btmtyysxh4wjy"]
+
+[ext_resource type="Script" uid="uid://ofeefocbgaba" path="res://scripts/Game.cs" id="1_gee14"]
+[ext_resource type="PackedScene" uid="uid://d25qgfr62y815" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://yb6711l0g3of" path="res://scripts/Camera2d.cs" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://cuipsf2w06f8x" path="res://scenes/parallax_background.tscn" id="3_gee14"]
+[ext_resource type="PackedScene" uid="uid://o2crc3i423ej" path="res://scenes/platform_spawner.tscn" id="5_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://bxs60lxu7xqvu" path="res://scenes/bat_spawner.tscn" id="7_gee14"]
+[ext_resource type="PackedScene" uid="uid://kdtpg75pujp4" path="res://scenes/bat.tscn" id="8_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://dma8x3ch1fxme" path="res://scenes/lives_ui.tscn" id="8_vtaks"]
+[ext_resource type="AudioStream" uid="uid://cnpyw771fh6k6" path="res://assets/Wichs Tower.ogg" id="9_0tnpc"]
+[ext_resource type="Script" uid="uid://bysm7inml84u5" path="res://scripts/ScoreUi.cs" id="10_vtaks"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_iywne"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_gee14")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(144, 162)
+zoom = Vector2(2, 2)
+script = ExtResource("2_lnu2h")
+PlayerPath = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+position = Vector2(144, 144)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.699653, 0.699653, 0.699653, 1)
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("3_gee14")]
+
+[node name="BatSpawner" parent="." instance=ExtResource("7_gee14")]
+z_index = 2
+BatScene = ExtResource("8_0tnpc")
+
+[node name="PlatformSpawner" parent="." instance=ExtResource("5_u5sy4")]
+z_index = 0
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_iywne")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(288, 0)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_p57ef")
+
+[node name="LivesUI" parent="." instance=ExtResource("8_vtaks")]
+
+[node name="ScoreUI" type="CanvasLayer" parent="."]
+script = ExtResource("10_vtaks")
+PlayerPath = NodePath("../Player")
+ScoreLabelPath = NodePath("Label")
+
+[node name="Label" type="Label" parent="ScoreUI"]
+offset_left = 954.0
+offset_top = -3.0
+offset_right = 1037.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 22
+text = "Score: 0"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_0tnpc")
+autoplay = true
+parameters/looping = true

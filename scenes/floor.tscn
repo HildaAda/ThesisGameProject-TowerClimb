@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://j4dp0hk0jdsn"]
+
+[ext_resource type="Texture2D" uid="uid://dnerdhlk24ye4" path="res://assets/Floor.png" id="1_ukw5w"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kuqtn"]
+distance = -17.0
+
+[node name="Floor" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ukw5w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("WorldBoundaryShape2D_kuqtn")

@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://bj3gelru2rf8u"]
+
+[ext_resource type="Script" uid="uid://bjawfhoabqndr" path="res://scripts/Candelabra.cs" id="1_gxf1n"]
+[ext_resource type="Texture2D" uid="uid://bxm8d1kkjk642" path="res://assets/Candelabra.png" id="2_uulyg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_no08m"]
+atlas = ExtResource("2_uulyg")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m421l"]
+atlas = ExtResource("2_uulyg")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kps86"]
+atlas = ExtResource("2_uulyg")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggb70"]
+atlas = ExtResource("2_uulyg")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a3joh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_no08m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m421l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kps86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggb70")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vievo"]
+radius = 6.0
+height = 44.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y1dy6"]
+radius = 11.0
+height = 22.0
+
+[node name="Candelabra" type="Node2D"]
+script = ExtResource("1_gxf1n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_a3joh")
+autoplay = "default"
+frame_progress = 0.543068
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_vievo")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -12)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_y1dy6")
