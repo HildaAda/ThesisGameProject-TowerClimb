@@ -8,7 +8,6 @@ public class NoHeartsState : PlayerState
 
     public override void Enter()
     {
-        // Hyppy ennen kuolemaa
         player.AnimatedSprite.Play("Hurt");
         player.SetCollisionLayerValue(1, false); 
         player.SetCollisionMaskValue(1, false);

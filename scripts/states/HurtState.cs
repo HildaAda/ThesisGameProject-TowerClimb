@@ -16,7 +16,6 @@ public class HurtState : PlayerState
         player.AnimatedSprite.Play("Hurt");
         player.UpdateCollisionShape("Hurt");
 
-        // Vähennetään elämä ja päivitetään UI
         player.CurrentLives -= 1;
         player.LivesUi?.UpdateHearts(player.CurrentLives);
 

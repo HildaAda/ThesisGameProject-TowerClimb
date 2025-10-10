@@ -14,10 +14,8 @@ public class IdleState : PlayerState
     {
         Vector2 input = player.GetMovementInput();
 
-        // Sovelletaan painovoimaa
         player.Velocity += new Vector2(0, player.Gravity * (float)delta);
 
-        // Liikutetaan pelaajaa
         player.MoveAndSlide();
 
         if (Input.IsActionJustPressed("jump") && player.IsOnFloor())
@@ -31,7 +29,6 @@ public class IdleState : PlayerState
             player.TransitionTo(new WalkState(player));
         }
 
-        // Jos tippuu ilmassa, vaihda FallStateen
         if (!player.IsOnFloor())
         {
             player.TransitionTo(new FallState(player));
